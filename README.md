@@ -1,4 +1,98 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Onchain
+
+A modern crypto asset management app built with **React Native**. This project features:
+
+- **SwiftUI-based Fabric Component**: A high-performance native UI component written in SwiftUI and integrated via React Native's Fabric architecture.
+- **TurboModule**: A custom TurboModule bridges communication between native code and React Native, enabling fast, type-safe, and flexible data exchange.
+- **TypeScript-first**: All business logic, utilities, and types are written in TypeScript for safety and maintainability.
+- **Modular Structure**: UI components, business logic, and types are separated for easy testing and reuse.
+- **Unit Testing**: Core logic (filtering, sorting, formatting) is covered by unit tests.
+
+## Features
+
+- Crypto asset overview with real-time USD/HKD conversion
+- Sort and filter assets by value, name, or percentage change
+- Pull-to-refresh and skeleton loading states
+- Modern, accessible UI
+- Native currency picker (SwiftUI Fabric component)
+- Native-to-JS communication via TurboModule
+
+## Project Structure
+
+```
+src/
+  screens/
+    AssetScreen/
+      components/         # Reusable UI components (AssetItem, SortButton, etc.)
+      utils.ts            # Pure functions (filter, sort, format, etc.)
+      types.ts            # TypeScript type definitions
+      index.tsx           # Main screen logic
+      Currency.json       # Asset data
+      Fiat_rate_hkd.json  # HKD rates
+      Fiat_rate_usd.json  # USD rates
+    ...
+  ...
+specs/
+  NativeStoreValueManager.ts # TurboModule interface
+  CurrencyPickerNativeComponent.swift # SwiftUI Fabric component
+```
+
+## Native Integration
+
+### SwiftUI Fabric Component
+
+- The currency picker is implemented in SwiftUI and exposed to React Native via the new Fabric renderer for best performance and smooth animations.
+
+### TurboModule
+
+- A custom TurboModule (`NativeStoreValueManager`) is used for fast, type-safe communication between native (Swift/ObjC) and React Native (TypeScript).
+- Used for currency selection and other native events.
+
+## Testing
+
+- Pure functions (filterAssets, sortAssets, formatCurrency, etc.) are unit tested in `utils.test.ts`.
+- Run tests with:
+  ```sh
+  npm test
+  # or
+  yarn test
+  ```
+
+## Running the App
+
+1. Install dependencies:
+   ```sh
+   yarn install
+   # or
+   npm install
+   ```
+2. Start Metro:
+   ```sh
+   yarn start
+   # or
+   npm start
+   ```
+3. Run on iOS:
+   ```sh
+   yarn ios
+   # or
+   npm run ios
+   ```
+4. Run on Android:
+   ```sh
+   yarn android
+   # or
+   npm run android
+   ```
+
+## Notes
+
+- Make sure you have the required native build environment for iOS (Xcode) and Android (Android Studio/SDK).
+- The SwiftUI Fabric component and TurboModule require a modern React Native version (0.70+ recommended).
+
+---
+
+**Onchain** is a showcase of modern React Native + Native (SwiftUI) integration, with a focus on clean architecture, type safety, and great user experience.
 
 # Getting Started
 
@@ -66,7 +160,7 @@ This is one way to run your app — you can also build it directly from Android 
 
 Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
